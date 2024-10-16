@@ -14,4 +14,4 @@ class Coleccion:
         return self.documentos.get(id_documento)
     
     def __str__(self):
-        return f"Coleccion {self.nombre} con {len(self.documentos)} documentos"
+        return f"Coleccion {self.nombre} con {len(self.documentos)} documentos" 
