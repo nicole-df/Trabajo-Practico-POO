@@ -10,5 +10,5 @@ class Document:
         self.content[key] = value
 
     def __str__(self):
-        return f"Document: id={self.id}/nContent={self.content}"
+        return f"Document:\n ID: {self.id}\n Content: {self.content}"
     
