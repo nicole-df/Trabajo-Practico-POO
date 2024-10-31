@@ -3,11 +3,11 @@ class Document:
         self.id = id
         self.content = content if content is not None else {}
 
-    def get_value(self, key):
+    def get_data(self, key):
         return self.content.get(key, None)
     
-    def update_value(self, key, value):
-        self.content[key] = value
+    def update_data(self, key, data):
+        self.content[key] = data
 
     def __str__(self):
         return f"Document:\n ID: {self.id}\n Content: {self.content}"
