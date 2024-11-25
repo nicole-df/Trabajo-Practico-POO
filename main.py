@@ -21,18 +21,24 @@ def main():
         if opt == "1":
             name = input("Ingrese el nombre de la colección: ")
             db.create_collection(name)
-            print(f"Colección '{name}' creada.")
+            print(f"\nColección '{name}' creada.")
         
         elif opt == "2":
             name = input("Ingrese el nombre de la colección: ")
-            path = input("Ingrese la ruta del archivo CSV: ")
-            db.import_csv(name, path)
+            if name not in db.get_list():
+                print(f"\nColección '{name}' no encontrada.")
+            else:
+                path = input("Ingrese la ruta del archivo CSV: ")
+                if db.import_csv(name, path):
+                    print(f"\nArchivo '{path}' importado.")
+                else:
+                    print(f"\nNo se puedo importar el archivo '{path}'.") 
         
         elif opt == "3":
             name = input("Ingrese el nombre de la colección: ")
-            doc_id = int(input("Ingrese el ID del documento: "))
             collection = db.get_collection(name)
             if collection:
+                doc_id = int(input("Ingrese el ID del documento: "))
                 document = collection.search_document(doc_id)
                 if document:
                     print("\nDocumento encontrado:")
@@ -40,15 +46,17 @@ def main():
                 else:
                     print("\nDocumento no encontrado.")
             else:
-                print(f"Colección '{name}' no encontrada.")
+                print(f"\nColección '{name}' no encontrada.")
         
         elif opt == "4":
             name = input("Ingrese el nombre de la colección: ")
-            doc_id = int(input("Ingrese el ID del documento a eliminar: "))
             collection = db.get_collection(name)
             if collection:
+                doc_id = int(input("Ingrese el ID del documento a eliminar: "))
                 collection.delete_document(doc_id)
                 print("\nDocumento eliminado.")
+            else:
+                print(f"\nColección '{name}' no encontrada.")
         
         elif opt == "5":
             name = input("Ingrese el nombre de la colección: ")
@@ -57,10 +65,12 @@ def main():
                 documents = collection.get_list()
                 if documents:
                     print("\nLista de Documentos:")
-                    for key, value in documents:
-                        print(f"{key}){value}")
+                    for doc in documents:
+                        print(f"{doc}")
                 else:
-                    print("No hay documentos en la colección.")
+                    print("\nNo hay documentos en la colección.")
+            else:
+                print(f"\nColección '{name}' no encontrada.")
         
         elif opt == "6":
             col_list = db.get_list()
@@ -68,6 +78,8 @@ def main():
                 print("\nLista de colecciones:")
                 for index, col in enumerate(col_list, start=1):
                     print(f"{index}){col}")
+            else:
+                print("\nNo hay colecciones creadas.")
 
         elif opt == "7":
             print("Saliendo del programa.")

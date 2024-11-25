@@ -22,14 +22,17 @@ class Database:
     
     def import_csv(self, name, path):
         file = FileManager(path)
-        content = file.read_text().splitlines()
+        try:
+            content = file.read_text().splitlines()
+        except:
+            return False
         conv = Str2Dic(content[0])
         i = 1
         while i < len(content):
             dic_line = conv.convert(content[i])
             self.collections[name].add_document(dic_line)
             i+=1
-        return content
-    
+        return True
+            
     def __str__(self):
         return f"Document Database has {len(self.collections)} collections."

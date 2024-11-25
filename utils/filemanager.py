@@ -42,4 +42,3 @@ class FileManager:
         except Exception as e:
             print(f"Error writting file json {e}.")
 
-
