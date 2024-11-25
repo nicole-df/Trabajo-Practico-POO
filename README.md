@@ -15,15 +15,15 @@
 ### :page_facing_up: Content
 #### **Database classes**  
    In this section, you will find the key classes for managing the database. These classes allow for storing, retrieving, and manipulating documents and collections.
-   - [Database](src/db_classes/database.py)
-   - [Collection](src/db_classes/collection.py)
-   - [Document](src/db_classes/document.py) 
+   - [Database](db_classes/database.py)
+   - [Collection](db_classes/collection.py)
+   - [Document](db_classes/document.py) 
 #### **Utils**  
    Here you can find two utility classes that help with operations such as managing file operations and converting string data into a dictionary format.
-   - [File Manager](src/utils/filemanager.py)
-   - [String to Dic](src/utils/str2dic.py)
+   - [File Manager](utils/filemanager.py)
+   - [String to Dic](utils/str2dic.py)
 #### **Main**  
   The **Main** file is where the application starts. It manages user interactions with the database.
-   - [Main](src/main.py)
+   - [Main](main.py)
 
 
