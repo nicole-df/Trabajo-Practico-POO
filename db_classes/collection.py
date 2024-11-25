@@ -1,4 +1,4 @@
-from document import Document
+from db_classes.document import Document
 
 class Collection:
     def __init__(self, name):

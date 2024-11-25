@@ -1,6 +1,6 @@
-from collection import Collection
-from filemanager import FileManager
-from str2dic import Str2Dic
+from db_classes.collection import Collection
+from utils.filemanager import FileManager
+from utils.str2dic import Str2Dic
 
 class Database:
     def __init__(self):

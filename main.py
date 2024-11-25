@@ -1,4 +1,4 @@
-from database import Database
+from db_classes.database import Database
 
 print("\n--- Base de Datos Documental ---")
 
@@ -35,10 +35,10 @@ def main():
             if collection:
                 document = collection.search_document(doc_id)
                 if document:
-                    print("Documento encontrado:")
+                    print("\nDocumento encontrado:")
                     print(document)
                 else:
-                    print("Documento no encontrado.")
+                    print("\nDocumento no encontrado.")
             else:
                 print(f"Colección '{name}' no encontrada.")
         
@@ -48,6 +48,7 @@ def main():
             collection = db.get_collection(name)
             if collection:
                 collection.delete_document(doc_id)
+                print("\nDocumento eliminado.")
         
         elif opt == "5":
             name = input("Ingrese el nombre de la colección: ")
@@ -55,20 +56,18 @@ def main():
             if collection:
                 documents = collection.get_list()
                 if documents:
-                    print("\n------------- Lista de Documentos -------------")
+                    print("\nLista de Documentos:")
                     for key, value in documents:
                         print(f"{key}){value}")
-                    print("-------------------------------------------")  
                 else:
                     print("No hay documentos en la colección.")
         
         elif opt == "6":
             col_list = db.get_list()
             if col_list:
-                print("\n----- Lista de colecciones -----")
+                print("\nLista de colecciones:")
                 for index, col in enumerate(col_list, start=1):
                     print(f"{index}){col}")
-                print("--------------------------------")
 
         elif opt == "7":
             print("Saliendo del programa.")
