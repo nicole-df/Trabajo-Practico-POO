@@ -1,12 +1,13 @@
 from collection import Collection
-from document import Document
+from filemanager import FileManager
+from str2dic import Str2Dic
 
-class DocumentDatabase:
+class Database:
     def __init__(self):
         self.collections = {}
 
     def create_collection(self, name_collection):
-        if name_collection in self.collections:
+        if name_collection not in self.collections:
             self.collections[name_collection] = Collection(name_collection)
 
     def delete_collection(self, name_collection):
@@ -15,6 +16,20 @@ class DocumentDatabase:
         
     def get_collection(self, name_collection):
         return self.collections.get(name_collection, None)
+    
+    def get_list(self):
+        return list(self.collections.keys())
+    
+    def import_csv(self, name, path):
+        file = FileManager(path)
+        content = file.read_text().splitlines()
+        conv = Str2Dic(content[0])
+        i = 1
+        while i < len(content):
+            dic_line = conv.convert(content[i])
+            self.collections[name].add_document(dic_line)
+            i+=1
+        return content
     
     def __str__(self):
         return f"Document Database has {len(self.collections)} collections."

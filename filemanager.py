@@ -41,3 +41,5 @@ class FileManager:
             print(f"File json {self.file_path} written successfully.")
         except Exception as e:
             print(f"Error writting file json {e}.")
+
+

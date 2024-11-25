@@ -1,17 +1,22 @@
 class Str2Dic():
-    def __init__(self, schema, separator=","):
-        self.schema = schema.split(separator)
+    def __init__(self, header, separator=","):
+        if len(header) == 0:
+            raise ValueError("Header empty")
+        self.columns = header.split(separator)
         self.separator = separator
 
     def convert(self, row):
-        tmp = row.split(self.separator)
-        if len(tmp) == len(self.schema):
-            i = 0
-            d = {}
-            while i<len(tmp):
-                key = self.schema[i]
-                val = tmp[i]
-                d[key] = val
-                i=i+1
-            return d
+        values = row.split(self.separator)
+        if len(values) == len(self.columns):
+            if len(values) == len(self.columns):
+                i = 0
+                d = {}
+                while i<len(values):
+                    key = self.columns[i]
+                    val = values[i]
+                    d[key] = val
+                    i=i+1
+                return d
+        else:
+            raise ValueError("Row and Header lengths don't match.")
         

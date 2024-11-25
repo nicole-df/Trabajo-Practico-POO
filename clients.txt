@@ -1,0 +1,4 @@
+Nombre,Apellido,Edad,Pais
+Nicole,Faluotico,24,Argentina
+Gabriela,Perez,48,Argentina
+Irina,Saenz,26,Argentina

@@ -1,6 +1,5 @@
 class Document:
-    def __init__(self, id, content=None):
-        self.id = id
+    def __init__(self, content=None):
         self.content = content if content is not None else {}
 
     def get_data(self, key):
@@ -10,5 +9,6 @@ class Document:
         self.content[key] = data
 
     def __str__(self):
-        return f"Document:\n ID: {self.id}\n Content: {self.content}"
+        return f"{self.content}"
+    
     
